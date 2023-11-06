@@ -3,77 +3,111 @@ classDiagram
     LottoControl: +run()
     LottoControl: -LottoIssuancePrograss()
     LottoControl: -LottoWinningPrograss()
+    LottoControl --> LottoIssuance
+    LottoIssuance --> PrintScreen
+    PrintScreen --> LottosNumber
+    PrintScreen --> Text
+    PrintScreen --> LottoBuy
+    LottoIssuance --> LottoBuy
+    LottoIssuance --> LottoGenerator
+    LottoIssuance --> LottosNumber
+    LottoIssuance --> Request
+    Request --> LottoBuy
+    Request --> WinningLotto
+    Request --> TextNumberConvert
+    LottoControl --> PrintScreen
+    LottoControl --> FindWinning
+    FindWinning --> Request
+    FindWinning --> LottoBuy
+    FindWinning --> WinningLotto
+    FindWinning --> PrintScreen
+    FindWinning --> RateofReturn
+    RateofReturn --> PrintScreen
+    FindWinning --> enumWinning
+    enumWinning-->NumberData
+    enumWinning-->ErrorCheckWinning
+    enumWinning-->Text
+    ErrorCheck-->Text
+    ErrorCheck-->WinningLotto
+    ErrorCheck-->ErrorText
+    ErrorCheck-->NumberData
+    TextNumberConvert-->ErrorCheck
+    interfaceViewr<--PrintScreen
+    interfaceViewr<--enumWinning
+    interfaceViewr<--Request
+    interfaceinput<--Request
 
-    class LottoIssuance {
-        +void Issuance()
-        -List<Lotto> LottosGenerator(long)
-    }
+class LottoIssuance{
++void Issuance()
+-List<Lotto> LottosGenerator(long)
+}
 
-    class PrintScreen {
-        +void PrintLottoIssuanceNumber()
-        +void PrintLottoIssuance()
-        +void StartPrintWinningStatistics()
-        +void ShowRateofReturn()
-    }
+class PrintScreen{
++void PrintLottoIssuanceNumber()
++void PrintLottoIssuance()
++void StartPrintWinningStatistics()
++void ShowRateofReturn()
+}
 
-    class Request {
-        -long MoneyInputConversion(String)
-        -void MoneyInputMultipleRead()
-        +void RequestBuyMoney()
-        -Lotto WinningNumberInputConversion(String)
-        -void WinningNumberMultipleRead()
-        -void RequestLottoWinningNumber()
-        -int BonusNumberInputConversion(String)
-        -void BonusNumberMultipleRead()
-        -void RequestLottoBonusNumber()
-        +void RequestSetNumber()
-    }
+class Request{
+-long MoneyInputConversion(String)
+-void MoneyInputMultipleRead()
++void RequestBuyMoney()
+-Lotto WinningNumberInputConversion(String)
+-void WinningNumberMultipleRead()
+-void RequestLottoWinningNumber()
+-int BonusNumberInputConversion(String)
+-void BonusNumberMultipleRead()
+-void RequestLottoBonusNumber()
++void RequestSetNumber()
+}
 
-    class ErrorText {
-        +String errors
-    }
-    class Text {
-        +String usetext
-    }
-    class NumberData {
-        +int fixeddata
-        +long fixeddata
-    }
+class ErrorText{
++String errors
+}
+class Text{
++String usetext
+}
+class NumberData{
++int fixeddata
++long fixeddata
+}
 
-    class ErrorCheck {
-        -long IsNumber64bit(String)
-        -void MoneyRange(long)
-        -void UnitConfirmation(long)
-        +long MoneyInput(String)
-        -int IsNumber(String)
-        -int WiningNumberRange(int)
-        -Lotto IsNumberMulti(List<String>)
-        -Lotto SeparatorWinnerNumber(String)
-        +Lotto WinnerNumberInput(String)
-        -int BonusNumberRange(int)
-        -void BonusDuplicateNumber(int, int)
-        -int CheckDuplicateNumber(String)
-        +int BonusNumberInput(String)
-        +void WinningValueOf()
-    }
+class ErrorCheck{
+-long IsNumber64bit(String)
+-void MoneyRange(long)
+-void UnitConfirmation(long)
++long MoneyInput(String)
+-int IsNumber(String)
+-int WiningNumberRange(int)
+-Lotto IsNumberMulti(List<String>)
+-Lotto SeparatorWinnerNumber(String)
++Lotto WinnerNumberInput(String)
+-int BonusNumberRange(int)
+-void BonusDuplicateNumber(int, int)
+-int CheckDuplicateNumber(String)
++int BonusNumberInput(String)
++void WinningValueOf()
 
-    class LottoGenerator {
-        +List<Integer> LottoNumberGenerator()
-        -List<Integer> NumberAscendingSort()
-        -List<Integer> RandomNumberGenerator()
-    }
+}
 
-    class RateofReturn {
-        +void CalculateRateOfReturn(long, long)
-    }
+class LottoGenerator{
++List<Integer> LottoNumberGenerator()
+-List<Integer> NumberAscendingSort()
+-List<Integer> RandomNumberGenerator()
+}
 
-    class TextNumberConvert {
-        +long MoneyConvert(String)
-        +Lotto WinnerNumberConvert(String)
-        +int BonusNumberConversion(String)
-    }
+class RateofReturn{
++void CalculateRateOfReturn(long, long)
+}
 
-    class enumWinning{
+class TextNumberConvert{
++long MoneyConvert(String)
++Lotto WinnerNumberConvert(String)
++int BonusNumberConversion(String)
+}
+
+class enumWinning{
 -String textmatch
 -int matchwinningcountnumber
 -long prize

@@ -3,39 +3,6 @@ classDiagram
     LottoControl: +run()
     LottoControl: -LottoIssuancePrograss()
     LottoControl: -LottoWinningPrograss()
-    LottoControl --> LottoIssuance
-    LottoIssuance --> PrintScreen
-    PrintScreen --> LottosNumber
-    PrintScreen --> Text
-    PrintScreen --> LottoBuy
-    LottoIssuance --> LottoBuy
-    LottoIssuance --> LottoGenerator
-    LottoIssuance --> LottosNumber
-    LottoIssuance --> Request
-    Request --> LottoBuy
-    Request --> WinningLotto
-    Request --> TextNumberConvert
-    LottoControl --> PrintScreen
-    LottoControl --> FindWinning
-    FindWinning --> Request
-    FindWinning --> LottoBuy
-    FindWinning --> WinningLotto
-    FindWinning --> PrintScreen
-    FindWinning --> RateofReturn
-    RateofReturn --> PrintScreen
-    FindWinning --> enumWinning
-    enumWinning --> NumberData
-    enumWinning --> ErrorCheckWinning
-    enumWinning --> Text
-    ErrorCheck --> Text
-    ErrorCheck --> WinningLotto
-    ErrorCheck --> ErrorText
-    ErrorCheck --> NumberData
-    TextNumberConvert --> ErrorCheck
-    interfaceViewr <-- PrintScreen
-    interfaceViewr <-- enumWinning
-    interfaceViewr <-- Request
-    interfaceinput <-- Request
 
     class LottoIssuance {
         +void Issuance()
